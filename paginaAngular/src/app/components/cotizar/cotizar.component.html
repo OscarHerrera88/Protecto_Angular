@@ -1,0 +1,30 @@
+
+<app-navbar></app-navbar>
+    <div class="cotizar container ">
+
+        <form [formGroup]="cotizarForm" (ngSubmit)="guardarContacto()" class="row g-3 mt-5">
+        <h1 class="cotizacion text-center text-black mb-4">{{titulo_fomulario |uppercase}}</h1>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" formControlName="nombre">
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('nombre')?.hasError('required') && cotizarForm.get('nombre')?.touched">Nombre invalido</span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-3" id="exampleFormControlInput2" placeholder="Numero de celular"formControlName="celular">
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('celular')?.hasError('pattern')">celular invalido</span>
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('celular')?.hasError('required') && cotizarForm.get('celular')?.touched">número celular obligatorio</span>
+        </div>
+            <div class="mb-3">
+            <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="correo electronico"formControlName="correo">
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('correo')?.hasError('pattern')">Correo invalido</span>
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('correo')?.hasError('required') && cotizarForm.get('correo')?.touched">Correo obligatorio</span>
+            </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label ">Nombra los productos cantidades y tallas que requieres</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="mensaje"></textarea>
+            <span class="text-danger fw-bold" *ngIf="cotizarForm.get('mensaje')?.hasError('required') && cotizarForm.get('mensaje')?.touched">Mensaje obligatoria</span>
+            <button type="submit" class="btn btn-primary mt-3">enviar</button>
+        </div><img src="" alt="">
+    </form>
+    </div>
+
+    <app-footer></app-footer>
